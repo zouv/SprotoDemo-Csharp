@@ -7,6 +7,24 @@ ProtoMsgListener.cs : proto message listenter, handle proto message from server.
 
 
 ## testing
+###### listener:
+```javascript
+void Start ()
+{
+  // 监听服务端主推的协议
+  ProtoMsgListener.GetInstance().Add<Protocol.sc_map_enter>(ProtoMapEnterHandler);
+}
+
+/**
+ * 服务端通知进入场景
+ **/
+private void ProtoMapEnterHandler(SprotoTypeBase msg)
+{
+  var scMapEnterReq = (SprotoType.sc_map_enter.request)msg;
+  Debug.Log("ProtoMapEnterHandler___" + scMapEnterReq.map_id);
+}
+```
+
 ###### send:
 file: Assets/Script/UI/TestWin.cs
 ```javascript
