@@ -4,10 +4,11 @@ sproto demo for unity&amp;c#
 # Introduction
 NetManager.cs : send and receive.<br>
 ProtoMsgListener.cs : proto message listenter, handle proto message from server.<br>
-
+Sproto-Csharp is a C# implementation of sproto https://github.com/lvzixun/sproto-Csharp
 
 ## testing
 ###### listener:
+file: Assets/Script/UI/TestWin.cs
 ```javascript
 void Start ()
 {
