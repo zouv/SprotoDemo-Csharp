@@ -10,9 +10,9 @@ public class TestWin : MonoBehaviour
 
 	void Start ()
     {
+        _txtTips = transform.Find("TxtTips").GetComponent<Text>();
         Button btnLogin = transform.Find("BtnLogin").GetComponent<Button>();
         Button btnCreate = transform.Find("BtnCreate").GetComponent<Button>();
-        _txtTips = transform.Find("TxtTips").GetComponent<Text>();
 
         UIEventTriggerListener.Get(btnLogin.gameObject).onClick = OnClickLogin;
         UIEventTriggerListener.Get(btnCreate.gameObject).onClick = OnClickCreate;
@@ -35,9 +35,10 @@ public class TestWin : MonoBehaviour
      **/
     private void OnClickLogin(GameObject go, PointerEventData ed)
     {
+        //NetManager.GetInstance().Connect();
         _txtTips.text = "login ..";
         var msg = new SprotoType.cs_login.request();
-        msg.account = "zouwei1";
+        msg.account = "zouv";
         msg.password = "mypassword";
         NetManager.GetInstance().Send<Protocol.cs_login>(msg, ProtoLoginResponseHandler);
     }
@@ -60,6 +61,7 @@ public class TestWin : MonoBehaviour
     {
         var csLoginResp = (SprotoType.cs_login.response)msg;
         Debug.Log("ProtoLoginResponseHandler___" + csLoginResp.result);
+        _txtTips.text = csLoginResp.result == 1 ? "login successed" : "login failed";
     }
 
     /**
@@ -69,6 +71,7 @@ public class TestWin : MonoBehaviour
     {
         var csCreateResp = (SprotoType.cs_create.response)msg;
         Debug.Log("ProtoCreateResponseHandler___" + csCreateResp.result);
+        _txtTips.text = csCreateResp.result == 1 ? "create successed" : "create failed";
     }
 
     /**
