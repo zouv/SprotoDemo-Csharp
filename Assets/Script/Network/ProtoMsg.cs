@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/***
+* Author: zouv
+* Date: 2015-08-11
+* Doc: 协议事件封装
+***/
+
+using UnityEngine;
 using System.Collections;
 using Sproto;
 
